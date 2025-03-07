@@ -1,0 +1,11 @@
+services:
+  caddy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    network_mode: host
+    container_name: caddy
+    volumes:
+      - ./config/caddy.yaml:/etc/caddy/caddy.yaml
+    command: caddy run --config /etc/caddy/caddy.yaml --adapter yaml
+    restart: unless-stopped
